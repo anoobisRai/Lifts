@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Lifts.Shared.Domain
 {
-    class BaseDomainModel
+    public abstract class BaseDomainModel
     {
+        public int id { get; set; }
+
     }
 }
