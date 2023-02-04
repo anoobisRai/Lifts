@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Lifts.Shared.Domain
 {
-    public abstract class BaseDomainModel
+    public class VehicleSeater : BaseDomainModel
     {
-        public int Id { get; set; }
+        public int SeaterNumber { get; set; }
 
     }
 }

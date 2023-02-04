@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Lifts.Shared.Domain
 {
-    public abstract class BaseDomainModel
+    public class VehicleBrand : BaseDomainModel
     {
-        public int Id { get; set; }
+        public string BrandName { get; set; }
 
     }
 }

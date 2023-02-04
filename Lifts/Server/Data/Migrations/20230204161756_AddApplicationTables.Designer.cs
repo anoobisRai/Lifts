@@ -4,14 +4,16 @@ using Lifts.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Lifts.Server.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230204161756_AddApplicationTables")]
+    partial class AddApplicationTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -191,31 +193,11 @@ namespace Lifts.Server.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "3781efa7-66dc-47f0-860f-e506d04102e4",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "c7103032-ead8-4984-ac87-1abc9dd10abd",
-                            Email = "admin@localhost.com",
-                            EmailConfirmed = false,
-                            FirstName = "Admin",
-                            LastName = "User",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@LOCALHOST.COM",
-                            NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMZs5P9UwqPreV6NDHH6ZPtNqFxn9vp8Cq1OXN0rbwFXdCvQ0ZcXbCeY1G20uZjloA==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "557cfa95-2bce-42c8-b073-c697322eb94d",
-                            TwoFactorEnabled = false,
-                            UserName = "Admin"
-                        });
                 });
 
             modelBuilder.Entity("Lifts.Shared.Domain.Booking", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -223,7 +205,7 @@ namespace Lifts.Server.Data.Migrations
                     b.Property<DateTime>("BookingDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("CustomerId")
+                    b.Property<int?>("Customerid")
                         .HasColumnType("int");
 
                     b.Property<int>("CustomersId")
@@ -244,9 +226,9 @@ namespace Lifts.Server.Data.Migrations
                     b.Property<int>("VehicleID")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("Customerid");
 
                     b.HasIndex("StaffId");
 
@@ -257,7 +239,7 @@ namespace Lifts.Server.Data.Migrations
 
             modelBuilder.Entity("Lifts.Shared.Domain.Customer", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -280,14 +262,14 @@ namespace Lifts.Server.Data.Migrations
                     b.Property<string>("CustomerUsername")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("Lifts.Shared.Domain.Payment", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -307,7 +289,7 @@ namespace Lifts.Server.Data.Migrations
                     b.Property<string>("PaymentTransaction")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.HasIndex("BookingID");
 
@@ -316,7 +298,7 @@ namespace Lifts.Server.Data.Migrations
 
             modelBuilder.Entity("Lifts.Shared.Domain.Staff", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -336,14 +318,14 @@ namespace Lifts.Server.Data.Migrations
                     b.Property<string>("StaffUsername")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.ToTable("Staffs");
                 });
 
             modelBuilder.Entity("Lifts.Shared.Domain.Vehicle", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -360,7 +342,7 @@ namespace Lifts.Server.Data.Migrations
                     b.Property<int>("TypeID")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.HasIndex("BrandID");
 
@@ -373,7 +355,7 @@ namespace Lifts.Server.Data.Migrations
 
             modelBuilder.Entity("Lifts.Shared.Domain.VehicleBrand", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -381,31 +363,14 @@ namespace Lifts.Server.Data.Migrations
                     b.Property<string>("BrandName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.ToTable("Brands");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            BrandName = "Audi"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            BrandName = "BMW"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            BrandName = "Volvo"
-                        });
                 });
 
             modelBuilder.Entity("Lifts.Shared.Domain.VehicleSeater", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -413,31 +378,14 @@ namespace Lifts.Server.Data.Migrations
                     b.Property<int>("SeaterNumber")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.ToTable("Seaters");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            SeaterNumber = 4
-                        },
-                        new
-                        {
-                            Id = 2,
-                            SeaterNumber = 6
-                        },
-                        new
-                        {
-                            Id = 3,
-                            SeaterNumber = 9
-                        });
                 });
 
             modelBuilder.Entity("Lifts.Shared.Domain.VehicleType", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -445,26 +393,9 @@ namespace Lifts.Server.Data.Migrations
                     b.Property<string>("TypeName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.ToTable("Types");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            TypeName = "Car"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            TypeName = "Van"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            TypeName = "Coach"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -492,22 +423,6 @@ namespace Lifts.Server.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "ad2bcf0c-20db-474f-8407-5a6b159518ba",
-                            ConcurrencyStamp = "71f59d13-9cf3-4a03-965f-aedbd0792d21",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
-                        },
-                        new
-                        {
-                            Id = "bd2bcf0c-20db-474f-8407-5a6b159518bb",
-                            ConcurrencyStamp = "9596b9be-8a58-49c9-8222-5e573155e72c",
-                            Name = "User",
-                            NormalizedName = "USER"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -595,13 +510,6 @@ namespace Lifts.Server.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "3781efa7-66dc-47f0-860f-e506d04102e4",
-                            RoleId = "ad2bcf0c-20db-474f-8407-5a6b159518ba"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -629,7 +537,7 @@ namespace Lifts.Server.Data.Migrations
                 {
                     b.HasOne("Lifts.Shared.Domain.Customer", "Customer")
                         .WithMany("Booking")
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("Customerid");
 
                     b.HasOne("Lifts.Shared.Domain.Staff", "Staff")
                         .WithMany("Booking")

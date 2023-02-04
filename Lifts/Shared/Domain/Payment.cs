@@ -8,17 +8,16 @@ namespace Lifts.Shared.Domain
 {
     public class Payment : BaseDomainModel
     {
-        public int PaymentAmount{ get; set; }
+        public int PaymentAmount { get; set; }
 
         public DateTime PaymentDate { get; set; }
 
         public DateTime PaymentTime { get; set; }
 
-        public int PaymentTransaction { get; set; }
+        public string PaymentTransaction { get; set; }
 
         public int BookingID { get; set; }
         public virtual Booking Booking { get; set; }
-        public int StaffID { get; set; }
-        public virtual Staff Staff { get; set; }
-}
+
+    }
 }

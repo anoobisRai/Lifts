@@ -14,11 +14,11 @@ namespace Lifts.Shared.Domain
 
         public string StaffPassword { get; set; }
 
-        public int StaffContactNumber{ get; set; }
+        public int StaffContactNumber { get; set; }
 
         public string StaffEmail { get; set; }
-        public string StaffPosition { get; set; }
+
         public virtual List<Booking> Booking { get; set; }
-        public virtual List<Payment> Payment { get; set; }
+
     }
 }
