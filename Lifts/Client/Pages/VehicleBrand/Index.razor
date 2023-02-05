@@ -23,10 +23,10 @@ else
                 <tr>
                     <td>@vehicleBrand.BrandName</td>
                     <td>
-                        <a href="/brands/view/@vehicleBrand.Id" class="btn btn-primary">
+                        <a href="/Brands/view/@vehicleBrand.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>
                         </a>
-                        <a href="/brands/edit/@vehicleBrand.Id" class="btn btn-warning">
+                        <a href="/Brands/edit/@vehicleBrand.Id" class="btn btn-warning">
                             <span class="oi oi-pencil"></span>
                         </a>
                         <button class="btn btn-danger" @onclick="@(()=>Delete(vehicleBrand.Id))">
